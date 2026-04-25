@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>敷金ナイト | 敷金診断士による退去費用無料相談</title>
+  <meta name="description" content="その退去費用、本当に正しいですか？敷金ナイトでは敷金診断士が退去費用・原状回復費用の無料相談を受け付け、不当請求の見直しや減額交渉の考え方をサポートします。" />
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #1d2433;
+      --muted: #667085;
+      --accent: #1f4fd6;
+      --accent-2: #0f2f8c;
+      --line: #e7eaf1;
+      --good: #0f9d58;
+      --shadow: 0 10px 30px rgba(18, 34, 68, 0.08);
+      --radius: 18px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+    .btn {
+      display: inline-block; padding: 14px 22px; border-radius: 999px; font-weight: 800;
+      transition: .2s ease; border: 1px solid transparent; text-align:center;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-2); transform: translateY(-1px); }
+    .btn-secondary { background: #fff; color: var(--accent); border-color: var(--line); }
+    .btn-secondary:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .tag {
+      display: inline-block; padding: 6px 12px; border-radius: 999px; background: #e9f0ff; color: var(--accent-2);
+      font-size: 13px; font-weight: 800; letter-spacing: .02em;
+    }
+    header {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(10px);
+      background: rgba(247,248,251,.88); border-bottom: 1px solid rgba(231,234,241,.85);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 68px; gap: 16px; }
+    .brand { font-weight: 900; color: var(--text); font-size: 20px; }
+    .brand small { display: block; font-size: 11px; color: var(--muted); font-weight: 700; }
+    .nav-links { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); font-weight: 800; font-size: 14px; }
+    .hero { padding: 72px 0 48px; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: center; }
+    .hero-card, .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .hero-copy { padding: 38px; }
+    h1 { font-size: clamp(32px, 5vw, 54px); line-height: 1.15; margin: 14px 0 18px; letter-spacing: -.02em; }
+    .lead { font-size: 17px; color: var(--muted); margin-bottom: 24px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+    .mini-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
+    .mini-points div { background: #f9fbff; border: 1px solid var(--line); border-radius: 14px; padding: 14px; font-size: 14px; font-weight: 800; }
+    .stats { padding: 28px; }
+    .stats h3 { margin-top: 0; font-size: 22px; }
+    .stat-list { display: grid; gap: 14px; margin-top: 18px; }
+    .stat { padding: 16px; border-radius: 14px; background: #f9fbff; border: 1px solid var(--line); }
+    .stat strong { display: block; font-size: 26px; color: var(--accent-2); line-height: 1.1; }
+    section { padding: 28px 0; }
+    .section-head { margin-bottom: 18px; }
+    .section-head h2 { font-size: clamp(26px, 4vw, 38px); margin: 8px 0; }
+    .section-head p { color: var(--muted); margin: 0; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .service-card, .reason-card, .flow-card, .faq-item, .contact-box { padding: 24px; }
+    .service-card h3, .reason-card h3, .flow-card h3, .contact-box h3 { margin-top: 0; }
+    .service-card ul, .contact-box ul { padding-left: 1.2em; margin: 10px 0 0; }
+    .reason-card p, .flow-card p, .faq-item p, .service-card p { color: var(--muted); }
+    .flow-num { width: 40px; height: 40px; border-radius: 50%; display: inline-grid; place-items: center; background: #e9f0ff; color: var(--accent-2); font-weight: 900; margin-bottom: 10px; }
+    .faq { display: grid; gap: 14px; }
+    .faq-item summary { cursor: pointer; font-weight: 900; list-style: none; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item p { margin: 12px 0 0; }
+    .cta { padding: 34px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; align-items: center; background: linear-gradient(135deg, #1f4fd6, #0f2f8c); color: #fff; }
+    .cta p { color: rgba(255,255,255,.88); }
+    .cta .btn-primary { background: #fff; color: var(--accent-2); }
+    .cta .btn-secondary { background: transparent; color: #fff; border-color: rgba(255,255,255,.4); }
+    .note { font-size: 13px; color: var(--muted); background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+    .banner-wrap { display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+    .banner-wrap img { width:202px; height:143px; border:0; }
+    footer { padding: 32px 0 52px; color: var(--muted); font-size: 14px; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 900px) {
+      .hero-grid, .grid-3, .grid-2, .cta { grid-template-columns: 1fr; }
+      .mini-points { grid-template-columns: 1fr; }
+      .nav { padding: 12px 0; align-items: flex-start; }
+      .nav-links { gap: 10px 14px; }
+      .hero-copy, .stats, .service-card, .reason-card, .flow-card, .faq-item, .contact-box, .cta { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">敷金ナイト<small>敷金診断士による退去費用無料相談</small></div>
+      <nav class="nav-links">
+        <a href="#services">サービス</a>
+        <a href="#reasons">選ばれる理由</a>
+        <a href="#flow">相談の流れ</a>
+        <a href="#faq">よくある質問</a>
+        <a href="#contact" class="btn btn-primary">無料相談</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card hero-copy">
+          <span class="tag">退去費用・原状回復の相談窓口</span>
+          <h1>その退去費用、<br>本当に払う必要がありますか？</h1>
+          <p class="lead">敷金診断士の仁科秀基が、請求書・精算書・契約書・写真などをもとに、退去費用の妥当性を一つずつ確認します。借主負担と貸主負担の線引きを、わかりやすく整理します。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdP4fADmAIfjEn_xPNdI__PJiFAn4BuhQ8ldmYIvsTEFFsgWQ/viewform" target="_blank" rel="noopener">無料で相談する</a>
+            <a class="btn btn-secondary" href="#services">サービスを見る</a>
+          </div>
+          <div class="mini-points">
+            <div>請求内容のチェック</div>
+            <div>減額交渉の考え方を整理</div>
+            <div>返信文のたたき台作成</div>
+          </div>
+        </div>
+
+        <aside class="hero-card stats">
+          <h3>こんなお悩みに対応</h3>
+          <div class="stat-list">
+            <div class="stat"><strong>高額請求</strong> クロス全面張替え、床全面交換、ハウスクリーニング特約など</div>
+            <div class="stat"><strong>説明不足</strong> 見積りの数量が曖昧、根拠がない、写真が示されない請求</div>
+            <div class="stat"><strong>交渉不安</strong> 管理会社にどう返せばいいかわからない方への文章整理</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="tag">Service</span>
+          <h2>サービス内容</h2>
+          <p>退去費用に関する相談で、実際によく問題になる項目を中心に確認します。</p>
+        </div>
+        <div class="grid-3">
+          <div class="card service-card">
+            <h3>請求内容の妥当性チェック</h3>
+            <p>契約書、退去精算書、写真、やり取りの内容を確認し、借主負担が妥当かを整理します。</p>
+            <ul>
+              <li>クロス・床・建具の請求確認</li>
+              <li>ハウスクリーニング特約の見直し</li>
+              <li>数量や単価の不明点チェック</li>
+            </ul>
+          </div>
+          <div class="card service-card">
+            <h3>反論ポイントの整理</h3>
+            <p>国交省ガイドラインや一般的な考え方を踏まえ、どこを争点にするかをわかりやすくまとめます。</p>
+            <ul>
+              <li>通常損耗と故意過失の区別</li>
+              <li>耐用年数・経過年数の考え方</li>
+              <li>全面張替え主張への反論整理</li>
+            </ul>
+          </div>
+          <div class="card service-card">
+            <h3>相談文・返信文の作成</h3>
+            <p>管理会社や大家さんに送る文章を、感情的にならず、丁寧かつ筋の通った形で整えます。</p>
+            <ul>
+              <li>減額交渉メール</li>
+              <li>根拠資料請求の文章</li>
+              <li>退去立会い対応の文章</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reasons">
+      <div class="container">
+        <div class="section-head">
+          <span class="tag">Reason</span>
+          <h2>選ばれる理由</h2>
+          <p>難しい法律用語を並べるのではなく、相談者に伝わる言葉で整理します。</p>
+        </div>
+        <div class="grid-3">
+          <div class="card reason-card"><h3>わかりやすい説明</h3><p>専門用語をできるだけ噛み砕いて、今どこが問題なのかを見える化します。</p></div>
+          <div class="card reason-card"><h3>実務目線の整理</h3><p>請求側がどこを主張してくるか、どこが弱いかを踏まえて、現実的な交渉材料を整理します。</p></div>
+          <div class="card reason-card"><h3>文章化までサポート</h3><p>ポイントを説明するだけで終わらず、そのまま使いやすい文面づくりまで対応します。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow">
+      <div class="container">
+        <div class="section-head"><span class="tag">Flow</span><h2>ご相談の流れ</h2><p>はじめての方でも進めやすいよう、流れをシンプルにしています。</p></div>
+        <div class="grid-2">
+          <div class="card flow-card"><div class="flow-num">1</div><h3>フォームから相談</h3><p>退去費用の請求内容や現在の状況を、無料相談フォームからお知らせください。</p></div>
+          <div class="card flow-card"><div class="flow-num">2</div><h3>資料を確認</h3><p>契約書、請求書、見積書、写真、メール履歴など、わかる範囲の資料を確認します。</p></div>
+          <div class="card flow-card"><div class="flow-num">3</div><h3>争点を整理</h3><p>どこが借主負担になりやすいか、どこが争点になるかを、わかりやすく説明します。</p></div>
+          <div class="card flow-card"><div class="flow-num">4</div><h3>返信文を作成</h3><p>必要に応じて、管理会社へ送る文章や、根拠資料を求める文面のたたき台を作成します。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="card cta">
+          <div>
+            <span class="tag" style="background: rgba(255,255,255,.16); color: #fff;">まずは状況整理から</span>
+            <h2 style="margin: 10px 0 8px; font-size: clamp(28px,4vw,40px);">泣き寝入りする前に、<br>一度チェックしませんか？</h2>
+            <p>高額請求でも、全部がそのまま通るとは限りません。資料を見ながら、落ち着いて整理していきます。</p>
+          </div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:flex-start;">
+            <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdP4fADmAIfjEn_xPNdI__PJiFAn4BuhQ8ldmYIvsTEFFsgWQ/viewform" target="_blank" rel="noopener">無料相談フォームへ</a>
+            <a class="btn btn-secondary" href="#faq">よくある質問を見る</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head"><span class="tag">FAQ</span><h2>よくある質問</h2><p>相談前によくいただく質問をまとめました。</p></div>
+        <div class="faq">
+          <details class="card faq-item" open><summary>相談すると、必ず減額できますか？</summary><p>必ず減額できるとは言えません。ただ、請求内容のどこに疑問点があるか、どこが妥当かを整理することで、不必要な負担を避けやすくなります。</p></details>
+          <details class="card faq-item"><summary>まだ請求書が来ていない段階でも相談できますか？</summary><p>可能です。契約書や退去時のやり取り、特約内容を事前に確認しておくことで、請求前の準備がしやすくなります。</p></details>
+          <details class="card faq-item"><summary>管理会社に送る文章も作ってもらえますか？</summary><p>はい。状況に応じて、根拠資料の提示依頼、減額交渉、退去立会いへの返答文などのたたき台を整える形で対応できます。</p></details>
+          <details class="card faq-item"><summary>全国対応ですか？</summary><p>オンライン中心であれば全国からご相談いただけます。資料共有ができれば、地域を問わず整理しやすいです。</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container grid-2">
+        <div class="card contact-box">
+          <h3>無料相談はこちら</h3>
+          <p>退去費用でお困りの方は、まずは無料相談フォームから現在の状況をお知らせください。</p>
+          <p><a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdP4fADmAIfjEn_xPNdI__PJiFAn4BuhQ8ldmYIvsTEFFsgWQ/viewform" target="_blank" rel="noopener">無料相談フォームを開く</a></p>
+          <div class="note" style="margin-top:16px;">
+            ※完全無料で対応します。<br>
+            ※しつこい営業は一切ありません。<br>
+            ※お気軽にご相談ください。
+          </div>
+        </div>
+        <div class="card contact-box">
+          <h3>事業者情報</h3>
+          <ul>
+            <li>屋号：敷金ナイト</li>
+            <li>代表：仁科秀基</li>
+            <li>肩書：敷金診断士 / 宅地建物取引士</li>
+            <li>対応方法：オンライン相談中心</li>
+          </ul>
+          <div class="note" style="margin-top:16px;">
+            ※法律上の代理交渉や訴訟代理は行いません。請求内容の整理、考え方の説明、文章作成のサポートを中心に対応します。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="association">
+      <div class="container">
+        <div class="card contact-box">
+          <h3>敷金相談センター</h3>
+          <div class="banner-wrap">
+            <a href="http://www.shindanshikai.org/center.html" target="_blank" rel="noopener"><img src="http://www.nichijuken.org/bnr/bnr02.gif" width="202" height="143" alt="敷金相談センター" border="0"></a>
+            <p style="color:var(--muted); margin:0;">所属団体等から指定されたバナーを掲載しています。バナーをクリックすると、敷金相談センターのページへ移動します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>© 2026 敷金ナイト</div>
+      <div><a href="#contact">無料相談</a> / <a href="#faq">よくある質問</a></div>
+    </div>
+  </footer>
+</body>
+</html>
